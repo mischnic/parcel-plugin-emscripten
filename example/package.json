@@ -1,0 +1,12 @@
+{
+	"private": true,
+	"scripts": {
+		"postinstall": "rm -rf node_modules/parcel-plugin-emscripten && ln -s ../.. node_modules/parcel-plugin-emscripten",
+		"start": "parcel src/index.html",
+		"build": "parcel build --out-dir build src/index.html --public-url /"
+	},
+	"devDependencies": {
+		"parcel-bundler": "^1.5.0",
+		"parcel-plugin-emscripten": "mischnic/asdsd"
+	}
+}
