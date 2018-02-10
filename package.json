@@ -3,9 +3,9 @@
 	"version": "0.1.0",
 	"description": "Plugin",
 	"main": "index.js",
-	"repository": "https://github.com/mischnic/parcel-emscripten",
+	"repository": "https://github.com/mischnic/parcel-plugin-emscripten",
 	"bugs": {
-		"url": "https://github.com/mischnic/parcel-emscripten/issues"
+		"url": "https://github.com/mischnic/parcel-plugin-emscripten/issues"
 	},
 	"author": "Niklas Mischkulnig",
 	"license": "MIT",

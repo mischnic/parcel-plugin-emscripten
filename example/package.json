@@ -7,6 +7,6 @@
 	},
 	"devDependencies": {
 		"parcel-bundler": "^1.5.0",
-		"parcel-plugin-emscripten": "mischnic/asdsd"
+		"parcel-plugin-emscripten": "mischnic/parcel-plugin-emscripten"
 	}
 }
