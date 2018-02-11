@@ -30,10 +30,10 @@ describe('Advanced Tests', function() {
 					Array.from(this.b.assets)
 						 .find((v)=>v instanceof CAsset)
 						 .outPath, '.js'
-				  )
+				  );
 
 
-		assert(fs.existsSync(__dirname + `/dist/${p}.wasm`))	
+		assert(fs.existsSync(__dirname + `/.dist/${p}.wasm`));
 	});
 
 	// it('files added as dependencies', function(){
@@ -47,8 +47,8 @@ describe('Advanced Tests', function() {
 	
 
 	it('Calling library function', async function() {
-		const result = await run(this.b)
-		assert.equal(result, 120)
+		const result = await run(this.b);
+		assert.equal(result, 120);
 	});
 
 });

@@ -11,7 +11,7 @@
 	"license": "MIT",
 	"scripts": {
 		"test": "cross-env NODE_ENV=test mocha",
-		"test-coverage": "nyc --reporter=lcov yarn test"
+		"test-coverage": "nyc --reporter=html --reporter=text yarn test"
 	},
 	"peerDependencies": {
 		"parcel-bundler": "^1.5.0"

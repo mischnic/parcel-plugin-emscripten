@@ -9,12 +9,14 @@ const Bundler = require('parcel-bundler');
 
 const plugin = require('../')
 
+const outDir = ".dist";
+
 function bundler(file, opts) {
 	const b = new Bundler(
 		file,
 		Object.assign(
 			{
-				outDir: path.join(__dirname, 'dist'),
+				outDir: path.join(__dirname, outDir),
 				cacheDir: path.join(__dirname, '.cache'),
 				publicURL: "/",
 				watch: false,
@@ -49,7 +51,7 @@ function prepareBrowserContext(bundle, globals) {
 						setTimeout(function() {
 							if (el.tag === 'script') {
 								vm.runInContext(
-									fs.readFileSync(path.join(__dirname, 'dist', el.src)),
+									fs.readFileSync(path.join(__dirname, outDir, el.src)),
 									ctx
 								);
 							}
@@ -73,7 +75,7 @@ function prepareBrowserContext(bundle, globals) {
 					ok: true,
 					arrayBuffer() {
 						return Promise.resolve(
-							new Uint8Array(fs.readFileSync(path.join(__dirname, 'dist', url)))
+							new Uint8Array(fs.readFileSync(path.join(__dirname, outDir, url)))
 								.buffer
 						);
 					}
