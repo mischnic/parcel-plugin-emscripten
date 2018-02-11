@@ -14,8 +14,6 @@ const fs = {
 const mkdirp = promisify(require('mkdirp'));
 
 
-const isProduction = process.env.NODE_ENV === "production";
-
 function promisify(fn) {
   return function(...args) {
     return new Promise(function(resolve, reject) {
@@ -126,7 +124,7 @@ class CAsset extends Asset {
 			this.outPath
 		];
 
-		if(isProduction){
+		if(this.options.minify){
 			args.push("-Os");
 		}
 

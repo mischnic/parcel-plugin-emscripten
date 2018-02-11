@@ -9,10 +9,20 @@
 	},
 	"author": "Niklas Mischkulnig",
 	"license": "MIT",
+	"scripts": {
+		"test": "cross-env NODE_ENV=test mocha",
+		"test-coverage": "nyc --reporter=lcov yarn test"
+	},
 	"peerDependencies": {
 		"parcel-bundler": "^1.5.0"
 	},
 	"dependencies": {
 		"command-exists": "^1.2.2"
+	},
+	"devDependencies": {
+		"cross-env": "^5.1.3",
+		"mocha": "^5.0.0",
+		"nyc": "^11.4.1",
+		"parcel-bundler": "^1.5.1"
 	}
 }

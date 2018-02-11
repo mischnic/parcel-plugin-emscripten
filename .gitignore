@@ -1,1 +1,5 @@
 node_modules/
+test/.cache
+test/dist
+coverage
+.nyc_output
