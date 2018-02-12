@@ -3,6 +3,7 @@ node_js:
   - "stable"
 
 before_install:
+- sudo apt-get update
 - sudo apt-get install libstdc++6
 - cd $HOME
 - curl -LO https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz
