@@ -11,3 +11,6 @@ before_install:
 - ./emsdk install latest
 - ./emsdk activate latest
 - source ./emsdk_env.sh
+
+script:
+- yarn test
