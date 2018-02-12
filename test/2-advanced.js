@@ -7,15 +7,16 @@ const {bundle, run} = require('./utils')
 const CAsset = require("../CAsset")
 
 
+if (!commandExists.sync('emcc')) {
+	console.log(
+		'Emscripten needs to be installed!'
+	);
+	return;
+}
+
+
 describe('Advanced Tests', function() {
 	this.timeout(60000);
-
-	if (!commandExists.sync('emcc')) {
-		console.log(
-			'Emscripten needs to be installed!'
-		);
-		return;
-	}
 
 	it('library bundling works', async function(){
 		this.b = await bundle(__dirname + '/library/index.js');

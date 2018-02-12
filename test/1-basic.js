@@ -7,13 +7,15 @@ const {bundle, run} = require('./utils')
 const CAsset = require("../CAsset")
 
 
+if (!commandExists.sync('emcc')) {
+	console.log(
+		'Emscripten needs to be installed!'
+	);
+	return;
+}
+
+
 describe('Basic Tests', function() {
-	if (!commandExists.sync('emcc')) {
-		console.log(
-			'Emscripten needs to be installed!'
-		);
-		return;
-	}
 
 	this.timeout(60000);
 
