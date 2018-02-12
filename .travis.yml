@@ -5,10 +5,8 @@ dist: "xenial"
 
 cache:
   directories:
-  - $HOME/.emscripten
   - $HOME/.emscripten_cache
   - $HOME/.emscripten_ports
-  - $HOME/.emscripten_sanity
 
 before_install:
 - cd $HOME
