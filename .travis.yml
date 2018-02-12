@@ -1,8 +1,16 @@
 language: node_js
 node_js:
   - "stable"
+dist: "xenial"
+
+cache:
+  directories:
+  - $HOME/.emscripten_cache
+  - $HOME/.emscripten_ports
 
 before_install:
+- sudo apt-get update
+- sudo apt-get upgrade --no-install-recommends --no-install-suggests libstdc++6 -y
 - cd $HOME
 - curl -LO https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz
 - tar -xf emsdk-portable.tar.gz
@@ -11,7 +19,10 @@ before_install:
 - ./emsdk install latest
 - ./emsdk activate latest
 - source ./emsdk_env.sh
+- echo "#include<emscripten.h> int EMSCRIPTEN_KEEPALIVE test(){return 0;}" > test.c
+- emcc -s WASM=1 test.c -o test.js
 - cd $TRAVIS_BUILD_DIR
+
 
 install:
 - yarn
