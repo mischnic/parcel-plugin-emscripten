@@ -94,15 +94,16 @@ class CAsset extends Asset {
 	}
 
 	collectDependencies() {
-		const p = path.dirname(this.name)
+		const folder = path.dirname(this.name);
+		const getAbs = (v) => path.join(folder, v);
 
 		this.contents.split("\n")
 					 .map((l)=>l.match(headerRegex))
 					 .filter((v)=> v && v[1])
-					 .map((v)=> this.addDependency(path.join(p,v[1]), {includedInParent: true, name: this.name}));
+					 .map((v)=> this.addDependency("./"+v[1], {includedInParent: true, name: getAbs(v[1])}));
 
 		for(let i = this.cFiles.length - 1; i >= 0; i--){
-			this.addDependency(this.cFiles[i], {includedInParent: true, name: this.name});
+			this.addDependency("./"+this.cFiles[i], {includedInParent: true, name: getAbs(this.cFiles[i])});
 		}
 
 	}

@@ -1,4 +1,4 @@
-// Code from parcel-bundler/test/utils.js
+// Code mainly from parcel-bundler/test/utils.js
 
 const path = require('path');
 const vm = require('vm');
