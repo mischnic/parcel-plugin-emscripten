@@ -1,5 +1,7 @@
 # Parcel plugin for Emscripten
 
+[![Build Status](https://travis-ci.org/mischnic/parcel-plugin-emscripten.svg?branch=master)](https://travis-ci.org/mischnic/parcel-plugin-emscripten)
+
 A [Parcel](https://parceljs.org/) plugin to enable importing a C file inside a JS file.
 
 Emscripten has to be installed and `emcc` needs to be in the `PATH`.
