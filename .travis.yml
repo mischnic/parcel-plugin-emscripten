@@ -2,10 +2,14 @@ language: node_js
 node_js:
   - "stable"
 
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - libstdc++6
+
 before_install:
-- sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-- sudo apt-get update
-- sudo apt-get upgrade libstdc++6 -y
 - cd $HOME
 - curl -LO https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz
 - tar -xf emsdk-portable.tar.gz
