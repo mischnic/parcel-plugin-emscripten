@@ -11,10 +11,10 @@ before_install:
 - ./emsdk install latest
 - ./emsdk activate latest
 - source ./emsdk_env.sh
+- cd $TRAVIS_BUILD_DIR
 
 install:
 - yarn
 
 script:
-- cd $TRAVIS_BUILD_DIR
 - yarn test
