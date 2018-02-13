@@ -1,3 +1,5 @@
 example
 test
 *.sublime-*
+coverage
+.nyc_output

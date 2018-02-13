@@ -79,12 +79,12 @@ describe("Test ccall and cwrap", async function(){
 	it('bundling works', async function() {
 		this.b = await bundle(__dirname + '/ccall/index.js');
 	});
-	it('Dev: Test', async function() {
+	it('Dev: works', async function() {
 		const result = await run(this.b)
 		assert.deepEqual(result, ["yes!", "no!", "yes!", "no!"])
 	});
 
-	it('Prod: Test', async function() {
+	it('Prod: works', async function() {
 		this.bProd = await bundle(__dirname + '/ccall/index.js', {minify: true});
 		
 		const result = await run(this.bProd);
