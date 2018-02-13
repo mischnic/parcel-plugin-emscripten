@@ -114,10 +114,11 @@ class CAsset extends Asset {
 		await this.checkEmscripten();
 
 		await mkdirp(this.options.cacheDir);
-		
+
 		let args = [
 			// '-Os',
 			'-s', "WASM=1",
+			'-s', "MODULARIZE=1",
 			// '-s', 'ASSERTIONS=1',
 			'-s', 'EXTRA_EXPORTED_RUNTIME_METHODS=["ccall", "cwrap"]',
 			this.name,
@@ -162,8 +163,16 @@ class CAsset extends Asset {
 		return {
 			js: (await fs.readFile(this.outPath, "utf8"))
 					.replace(new RegExp(name, "g"), publicURL+"/"+name)
-					+ ";Module.ready = new Promise(res => { Module['onRuntimeInitialized'] = () => res(Module) });"
-					+ "module.exports = Module;"
+					// fix https://github.com/kripken/emscripten/issues/5820 !
+					/*
+
+module\.exports = Module;
+	to
+Module._then = Module.then;
+Module.then = (f) => {delete m['then']; _then(f);};
+module.exports = Module;
+???
+					*/
 		};
 	}
 }

@@ -1,9 +1,12 @@
 import Module from './test.c';
+const Instance = Module();
 
-module.exports = Module.ready.then(()=>{
-	const func = Module.cwrap("test", "string", ["number"]);
+// Workaround for https://github.com/kripken/emscripten/issues/5820
+module.exports = new Promise(res => 
+	Instance.then(()=>{
+		const func = Instance.cwrap("test", "string", ["number"]);
 
-	return [func(true), func(false),
-			Module.ccall("test", "string", ["number"], [true]),
-			Module.ccall("test", "string", ["number"], [false])];
-});
+		res([func(true), func(false),
+			Instance.ccall("test", "string", ["number"], [true]),
+			Instance.ccall("test", "string", ["number"], [false])]);
+	}));

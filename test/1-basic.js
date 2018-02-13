@@ -91,3 +91,41 @@ describe("Test ccall and cwrap", async function(){
 		assert.deepEqual(result, ["yes!", "no!", "yes!", "no!"])
 	});
 });
+
+describe("Test printf", async function(){
+	this.timeout(60000);
+	it('bundling works', async function() {
+		this.b = await bundle(__dirname + '/printing/index.js');
+	});
+
+	it('Dev: works', async function() {
+		const result = await run(this.b);
+		assert.equal(result, "test: 37");
+	});
+
+	it('Prod: works', async function() {
+		this.bProd = await bundle(__dirname + '/printing/index.js', {minify: true});
+		
+		const result = await run(this.bProd);
+		assert.equal(result, "test: 37");
+	});
+});
+
+describe("Test C++", async function(){
+	this.timeout(120000);
+	it('bundling works', async function() {
+		this.b = await bundle(__dirname + '/cpp/index.js');
+	});
+
+	it('Dev: works', async function() {
+		const result = await run(this.b);
+		assert.equal(result, "3,12,25,13,");
+	});
+
+	it('Prod: works', async function() {
+		this.bProd = await bundle(__dirname + '/cpp/index.js', {minify: true});
+		
+		const result = await run(this.bProd);
+		assert.equal(result, "3,12,25,13,");
+	});
+});

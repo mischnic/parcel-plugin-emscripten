@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "lib.h"
 
+
 int EMSCRIPTEN_KEEPALIVE add(int x, int y) {
 	return x + y;
 }

@@ -15,10 +15,10 @@ if (!commandExists.sync('emcc')) {
 }
 
 
-describe('Advanced Tests', function() {
+describe('Library bundling', function() {
 	this.timeout(60000);
 
-	it('library bundling works', async function(){
+	it('bundling works', async function(){
 		this.b = await bundle(__dirname + '/library/index.js');
 	});
 	
@@ -42,10 +42,8 @@ describe('Advanced Tests', function() {
 	// 	console.log(Array.from(this.b.assets).find((v)=>v instanceof CAsset))
 	// 	// console.log(Array.from(this.b.assets).find((v)=>v instanceof CAsset).dependencies)
 
-
 	// });
 
-	
 
 	it('Calling library function', async function() {
 		const result = await run(this.b);
